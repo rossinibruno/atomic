@@ -1,0 +1,419 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+
+    html {
+      zoom: 1
+    }
+
+    html,
+    body {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 12px;
+    }
+
+    h1 {
+      text-align: center;
+      background: #ededed;
+      margin-bottom: 30x;
+      font-size: 22px;
+    }
+
+    h2 {
+      font-size: 17px;
+    }
+
+    h3 {
+      font-size: 14px;
+    }
+
+    h2,
+    h3 {
+      margin-bottom: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+    }
+
+    table,
+    tr,
+    td {
+      border: 1px solid #dbdbdb;
+    }
+
+    td.highlight, span.highlight {
+      /* background-color: yellow; */
+    }
+
+  </style>
+</head>
+
+<body>
+  <p style="text-align: right; line-height: 15px;">Data da emissão do contrato pelo Conta Café: <%= document.createdAt %><br>Transação: 0001/2024</p><br>
+
+  <h1>QUADRO RESUMO</h1>
+
+  <p>O presente quadro resumo abaixo, contém as principais condições comerciais estabelecidas no presente Contrato de Compra e Venda a Termo de Café entre COMPRADOR, VENDEDOR e INTERVENIENTE ANUENTE.</p>
+
+  <p>
+    <div style="border: 1px solid black;">Para tornar o presente Contrato válido e eficaz, caberá a INTERVENIENTE a obrigação de colher as devidas assinaturas (reconhecidas em Cartório de Notas) do representante legal da COMPRADORA e do VENDEDOR (e cônjuge, se houver), no prazo de 15 dias, contados da emissão eletrônica do presente Contrato na plataforma do Conta Café, sendo que após esse prazo será faturado a COMPRADORA e INTERVENIENTE o valor correspondente a emissão do presente Contrato.</div>
+  </p>
+
+  <h2>I. PARTES</h2>
+
+  <table>
+    <tr>
+      <td><b>Comprador:</b> <%= buyer.businessName %></td>
+    </tr>
+    <tr>
+      <td><b>CNPJ/MF:</b> <%= buyer.cnpj %></td>
+    </tr>
+    <tr>
+      <td><b>Inscrição estadual:</b> <%= buyer.stateRegistration %></td>
+    </tr>
+    <tr>
+      <td><b>Endereço:</b> <%= buyer.streetAddress %>, <%= buyer.numberAddress %> - <%= buyer.complementAddress %></td>
+    </tr>
+    <tr>
+      <td><b>Bairro:</b> <%= buyer.suburbAddress %></td>
+    </tr>
+    <tr>
+      <td><b>Cep:</b> <%= buyer.zipCodeAddress %></td>
+    </tr>
+    <tr>
+      <td><b>Cidade:</b> <%= buyer.cityAddress %></td>
+    </tr>
+    <tr>
+      <td><b>Estado:</b> <%= buyer.stateAddress %></td>
+    </tr>
+    <tr>
+      <td><b>Filial:</b> </td>
+    </tr>
+    <tr>
+      <td><b>CNPJ/MF:</b> </td>
+    </tr>
+    <tr>
+      <td><b>Endereço:</b> </td>
+    </tr>
+    <tr>
+      <td><b>Bairro:</b> </td>
+    </tr>
+    <tr>
+      <td><b>Cep:</b> </td>
+    </tr>
+    <tr>
+      <td><b>Cidade:</b> </td>
+    </tr>
+    <tr>
+      <td><b>Estado:</b> </td>
+    </tr>
+  </table><br>
+  <!-- <p>Campos em amarelo são para preenchimento manual (1 contrato por Vendedor / Produtor)</p> -->
+  <table>
+    <tr>
+      <td class="highlight"><b>Vendedor:</b> <%= farmer.name %></td>
+    </tr>
+    <tr>
+      <td class="highlight"><b>CPF/MF:</b> <%= farmer.cpf %></td>
+    </tr>
+    <tr>
+      <td class="highlight"><b>Inscrição estadual:</b> <%= farmer.stateRegistration %></td>
+    </tr>
+    <tr>
+      <td class="highlight"><b>Nacionalidade:</b> </td>
+    </tr>
+    <tr>
+      <td class="highlight"><b>Estado civil:</b> <%= farmer.partnerStatus %></td>
+    </tr>
+    <tr>
+      <td class="highlight"><b>Cônjuge:</b> <%= farmer.partnerName %></td>
+    </tr>
+    <tr>
+      <td class="highlight"><b>CPF do cônjuge:</b> <%= farmer.partnerCpf %></td>
+    </tr>
+    <tr>
+      <td class="highlight"><b>Endereço:</b> <%= farmer.streetAddress %>, <%= farmer.numberAddress %>, <%= farmer.complementAddress %></td>
+    </tr>
+    <tr>
+      <td class="highlight"><b>Bairro:</b> <%= farmer.suburbAddress %></td>
+    </tr>
+    <tr>
+      <td class="highlight"><b>Cep:</b> <%= farmer.zipCodeAddress %></td>
+    </tr>
+    <tr>
+      <td class="highlight"><b>Cidade:</b> <%= farmer.cityAddress %></td>
+    </tr>
+    <tr>
+      <td class="highlight"><b>Estado:</b> <%= farmer.stateAddress %></td>
+    </tr>
+  </table><br>
+
+  <h2>II. INTERVENIENTE ANUENTE</h2>
+
+  <table>
+    <tr>
+      <td><b>Interveniente anuente:</b> <%= trader.businessName %></td>
+    </tr>
+    <tr>
+      <td><b>CNPJ/MF:</b> <%= trader.cnpj %></td>
+    </tr>
+    <tr>
+      <td><b>Inscrição estadual:</b> <%= trader.stateRegistration %></td>
+    </tr>
+    <tr>
+      <td><b>Endereço:</b> <%= trader.streetAddress %>, <%= trader.numberAddress %> -
+        <%= trader.complementAddress %></td>
+    </tr>
+    <tr>
+      <td><b>Bairro:</b> <%= trader.suburbAddress %></td>
+    </tr>
+    <tr>
+      <td><b>Cep:</b> <%= trader.zipCodeAddress %></td>
+    </tr>
+    <tr>
+      <td><b>Cidade:</b> <%= trader.cityAddress %></td>
+    </tr>
+    <tr>
+      <td><b>Estado:</b> <%= trader.stateAddress %></td>
+    </tr>
+    <tr>
+      <td><b>Dados bancários:</b>
+        <ul>
+          <li> Banco: <%= trader.bankName %> - <%= trader.bankNumber %></li>
+          <li> Agência: <%= trader.bankAgency %></li>
+          <li> Conta: <%= trader.bankAccount %></li>
+          <li> CNPJ/CPF: <%= trader.bankNationalRegister %></li>
+        </ul>
+      </td>
+    </tr>
+  </table><br>
+
+  <h2>III. OBJETO DO CONTRATO</h2>
+
+  <table>
+    <tr>
+      <td><b>Compra e venda de café a termo, com as seguintes especificações:</b> Café acondicionado em BigBag ou
+        Sacaria</td>
+    </tr>
+    <tr>
+      <td><b>Produto:</b> Café <%= negotiation.typeCoffee %> - <%= negotiation.qualityCoffee %></td>
+    </tr>
+    <tr>
+      <td><b>Safra:</b> <%= negotiation.harvestSeason %></td>
+    </tr>
+    <tr>
+      <td><b>Quantidade de Sacas (60Kg):</b> <%= negotiation.amount %></td>
+    </tr>
+    <tr>
+      <td><b>Padrão de qualidade (descrever detalhadamente as condições negociadas quanto ao produto e mercadoria): </b><%= negotiation.descriptionCoffee %> <b><%= negotiation.certificate ? 'Com certificação 4C' : '' %></b></td>
+    </tr>
+    <tr>
+      <td><b>Observações:</b> </td>
+    </tr>
+  </table><br>
+
+  <h2>IV. PREÇO</h2>
+
+  <table>
+    <tr>
+      <td><b>R$ por saca:</b> <%= negotiation.price %>*</td>
+    </tr>
+    <tr>
+      <td class="highlight"><b>Valor total da Mercadoria de R$:</b> <%= negotiation.totalPrice %></td>
+    </tr>
+  </table>
+  <%= negotiation.interestIncluded ? '* Valor livre de Funrural e Senar' : '* Valor sujeito à incidência de Funrural e Senar' %>
+  <br><br>
+
+  <h2>V. DATA DA ENTREGA</h2>
+
+  <table>
+    <tr>
+      <td>
+        <%= negotiation.deliveryDate %>
+      </td>
+    </tr>
+  </table><br>
+
+  <h2>VI. LOCAL DE ENTREGA</h2>
+
+  <table>
+    <tr>
+      <td><%= warehouse.name %></td>
+    </tr>
+    <tr>
+      <td><b>Endereço: </b>
+        <%= warehouse.streetAddress %> -
+        <%= warehouse.numberAddress %> -
+        <%= warehouse.complementAddress %> -
+        <%= warehouse.suburbAddress %> -
+        <%= warehouse.cityAddress %> -
+        <%= warehouse.stateAddress %>
+      </td>
+    </tr>
+  </table><br>
+
+  <h2>VII. LOCAL DE FORMAÇÃO DA LAVOURA</h2>
+
+  <table>
+    <tr>
+      <td class="highlight"><b>Área:</b> <%= farmer.coffeeArea %></td>
+    </tr>
+    <!-- tr>
+      <td><b>Produção estimada para safra ano:</b> </td>
+    </tr -->
+    <tr>
+      <td class="highlight"><b>Município:</b> <%= farmer.cityAddress %></td>
+    </tr>
+    <tr>
+      <td class="highlight"><b>Estado:</b> <%= farmer.stateAddress %></td>
+    </tr>
+    <!-- tr>
+      <td><b>Área de café em produção:</b> </td>
+    </tr -->
+  </table><br>
+
+  <h1>CONTRATO DE COMPRA E VENDA DE CAFÉ A TERMO</h1>
+
+  <p>As Partes devidamente qualificadas no Quadro Resumo deste contrato, têm entre si, justo e contratado, a celebração do presente Instrumento Particular, doravante simplesmente denominado “Contrato”, de acordo com as seguintes cláusulas e condições:</p>
+
+  <h2>1. OBJETO DO CONTRATO</h2>
+
+  <p>1.1. O VENDEDOR devidamente qualificado no item I do quadro resumo, neste ato e na melhor forma de direito, VENDE a temo à COMPRADORA a quantidade de café especificada no item III acima.</p>
+
+  <p>1.1.1. O VENDEDOR se obriga a entregar o café nos padrões especificados no quadro resumo que é parte integrante deste Contrato, devendo obedecer à data estabelecida no item V.</p>
+
+  <p>1.1.2. Caso a mercadoria vendida não obedeça aos padrões referidos nesta cláusula, caberá à Partes cumprir fielmente as regras estipuladas neste Contrato quanto ao deságio, especificadas na cláusula 2.1.1 abaixo.</p>
+
+  <h2>2. CONDIÇÕES DE ENTREGA</h2>
+
+  <p>2.1. O café, objeto deste contrato, deverá ser entregue pelo VENDEDOR, ou a quem ele expressamente indicar, no local indicado no item VI do quadro resumo ou em outro local a ser indicado previamente pela COMPRADORA, no mês indicado no item V, ocasião em que serão conferidos a qualidade e peso do café.</p>
+
+  <p>2.1.1. Na hipótese de a COMPRADORA constatar que o Produto não atende às especificações descritas acima, deverá o INTERVENIENTE substituir os cafés fora das especificações no prazo máximo de 10 (dez) dias. Caso não seja possível fazer a substituição do Produto, a COMPRADORA o receberá mesmo fora das especificações, porém, nessa hipótese, o preço indicado no item IV do quadro resumo deverá ser adequado à qualidade e ao tipo do Produto efetivamente entregue a COMPRADORA, com o que o INTERVENIENTE desde já concorda expressamente.</p>
+
+  <p>2.1.2. A <b>COMPRADORA</b> ao receber o produto fora da especificação acima mencionada, seja em razão do tipo ou da catação, e com a concordância do <b>VENDEDOR</b>, pagará pelo produto o valor ajustado, ou seja, o preço acordado neste contrato, menos o deságio. O deságio será estabelecido baseado na diferença de preço entre a qualidade contratada e a qualidade efetivamente entregue, praticado no mercado físico de café local na data da opção, considerando ainda:</p>
+
+  <p>(i) O deságio previsto neste parágrafo erige-se como instrumento de diminuição de risco e viabilidade do negócio, na medida em que a diferença entre um (produto prometido) e outro (produto entregue) reflete apenas o custo à maior que a COMPRADORA terá para adquirir no mercado o produto que esperava receber e pelo qual já fizera compromissos com terceiros;</p>
+
+  <p>(ii) A sujeição às regras previstas neste parágrafo afasta a incidência das penalidades contratuais previstas para o caso de não entrega do produto, do contrário tais penalidades incidirão normalmente.</p>
+
+  <p>2.1.3. A falta de entrega do café na data indicada no item V do quadro resumo resultará na aplicação das penalidades previstas neste contrato.</p>
+
+  <p>2.1.4. O café será considerado entregue e transferido somente quando constatado pela COMPRADORA estar o mesmo no local avençado, livre, desembaraçado e nas condições de qualidade estabelecidas neste contrato.</p>
+
+  <p>2.1.5. Se o local da entrega do café for de propriedade ou responsabilidade do VENDEDOR, a mercadoria só será considerada entregue quando efetivamente recebida e/ou retirada pela COMPRADORA.</p>
+
+  <h2>3. PREÇO E PAGAMENTO</h2>
+
+  <p>3.1. Pela presente compra e venda a termo de café, a COMPRADORA pagará ao VENDEDOR, o preço da Mercadoria, no valor total descrito no item IV do quadro resumo.</p>
+
+  <p>3.1.1. Caso a COMPRADORA deixe de efetuar o pagamento na data estabelecida, incidirá multa moratória equivalente a 5% (cinco por cento) sobre o valor da parcela acrescido de juros moratórios de 1% (um por cento) ao mês.</p>
+
+  <p>3.1.2. Com a entrega da Mercadoria e o pagamento, as Partes se dão ampla, geral e irrestrita quitação em relação ao objeto deste contrato, para nada mais reclamar, seja a que título for.</p>
+
+  <p>3.1.3. O preço da Mercadoria a ser entregue de acordo com a quantidade, qualidade e prazos referidos nos itens III e V do quadro resumo será pago pela COMPRADORA, mediante a finalização de carga do(s) caminhão(ões), emissão de NF(s) e liberação do armazém no prazo de 2 (dois) dias úteis contados da constatação da entrega total da Mercadoria no local no item VI do quadro resumo, em conta(s) corrente(s) a ser(em) informada(s) pelo VENDEDOR.</p>
+
+  <p>3.1.4. O VENDEDOR neste ato autoriza expressamente à COMPRADORA que realize o pagamento obtido com a compra e venda do produto objeto do presente contrato diretamente à INTERVENIENTE, ocasião em que deverá ser informada à COMPRADORA os dados bancários completos da INTERVENIENTE.</p>
+
+  <p>3.2. O preço ajustado entre as Partes é fixo e inalterável, devendo ser pago pela COMPRADORA de acordo com as condições de pagamento previstas neste contrato, mesmo que ocorram oscilações de mercado. Nesse sentido, as Partes ao concretizarem a negociação, reconhecem, desde já, que dentre outros fatores, a desvalorização da moeda nacional ou estrangeira, as oscilações nas bolsa nacionais e internacionais de mercadorias não constituem fatores caracterizadores de acontecimentos extraordinários e/ou imprevisíveis capazes de ensejar qualquer revisão das condições contratadas, assumindo cada parte, individualmente, todos os riscos por modificações de vantagens e/ou desvantagens que referidos fatores possam ocasionar até a efetiva entrega da Mercadoria e liquidação de todas as obrigações contempladas neste contrato.</p>
+
+  <p>3.2.1. Dada a modalidade de preço fixo e irreajustável deste instrumento, sob a qual nenhuma revisão de preço, para mais ou para menos será feita, as Partes reconhecem e declaram expressamente que as obrigações assumidas por força deste contrato estão em perfeito equilíbrio econômico e foram contraídas após mútua negociação, conforme os valores vigentes à época de sua constituição, representando benefícios para todos os envolvidos e não causando qualquer tipo de lesão aos mesmos.</p>
+
+  <p>3.3. Qualquer recebimento fora do prazo avençado constituirá mera tolerância, que não afetará de forma alguma a data de seu vencimento ou os demais itens e condições deste contrato, nem importará em novação ou modificação do presente, inclusive quanto aos encargos moratórios pactuados.</p>
+
+  <h2>4. TRIBUTOS</h2>
+
+  <p>4.1. A presente compra e venda é realizada a termo e só será considerada perfeita e acaba mediante a entrega efetiva da Mercadoria no local indicado no item VI do quadro resumo e ainda, mediante o pagamento do preço, ocorrendo somente nesse instante o fato gerador das obrigações tributárias da operação, quando houver.</p>
+
+  <p>4.1.1. Todos os tributos e encargos incidentes sobre este instrumento de venda e compra mercantil, e eventuais alterações da lei, até a data da entrega da Mercadoria correrá por conta exclusiva do VENDEDOR.</p>
+
+  <p>4.1.2. As contribuições referentes ao SENAR e FUNRURAL serão acrescidas no preço unitário livre ao VENDEDOR e recolhidas pela COMPRADORA. No caso de empregador rural pessoa física ou jurídica e/ou segurado especial, o FUNRURAL e o SENAR incidente na operação correrá por conta exclusiva do VENDEDORA.</p>
+
+  <p>4.1.3. Quando o responsável legal pelo pagamento do tributo for a COMPRADORA, esta reterá e/ou deduzirá o valor dos tributos em relação aos pagamentos dos valores que efetuar à INTERVENIENTE, recolhendo-os nos prazos legais, conforme a legislação vigente.</p>
+
+  <p>4.1.4. Havendo inovação na legislação tributária que implique na criação de tributos e/ou alteração do sujeito passivo atribuindo a COMPRADORA a responsabilidade pelo pagamento, direta ou indiretamente, sobre a transação objeto desse instrumento particular, o respectivo valor será recolhido e computado no custo da transação, descontando-se do VENDEDOR, podendo, se for o caso, o contrato ser resolvido (cancelado) unilateralmente pela COMPRADORA, sem direito à indenização por qualquer uma das Partes.</p>
+
+  <p> 4.1.5. O presente contrato se baseia nas atuais condições fiscais no cenário brasileiro notadamente com diferimento de ICMS e isenção de tributos na exportação (Lei Kandir). Em havendo mudanças nas atuais condições que impliquem qualquer alteração no cenário de venda do produto pela, a fim de se preservar o equilíbrio econômico-financeiro, a COMPRADORA poderá unilateralmente resolver (cancelar) o presente contrato, sem direito à indenização por qualquer uma das Partes.</p>
+
+  <h2>5. ANUÊNCIA</h2>
+
+  <p>5.1. A empresa devidamente qualificada no item 2 do quadro resumo, na qualidade de INTERVENIENTE ANUENTE, reconhece e concorda com todas as obrigações assumidas pelo VENDEDOR figurando como responsável solidária ao cumprimento do presente contrato e respondendo igualmente pelas sanções previstas na cláusula de inadimplemento a seguir.</p>
+
+  <h2>6. INADIMPLEMENTO</h2>
+
+  <p>6.1. Na falta de cumprimento de quaisquer das obrigações assumidas neste Contrato pelo VENDEDOR e pela INTERVENIENTE ANUENTE seja pela falta de entrega do café ou no caso de desvio a terceiros sem autorização da COMPRADORA dos produtos caracterizados no item III do quadro resumo, bem como para os casos de insolvência civil, recuperação judicial e falência do VENDEDOR ou garantidores, se o VENDEDOR vender ou alienar o imóvel onde o produto dado seja produzido, ou ainda, pela ocorrência de qualquer dos casos de antecipação legal do vencimento de dívidas previstos do Código Civil e demais dispositivos legais aplicáveis à espécie, considerar-se-ão vencidas antecipadamente as obrigações assumidas pelo VENDEDOR perante a COMPRADORA neste dispositivo contratual, independentemente de aviso, notificação ou qualquer tipo de comunicação extrajudicial ou judicial, estando determinado o inadimplemento do VENDEDOR e evidenciado de pleno direito a sua mora, podendo à COMPRADORA adotar imediatamente e a seu critério todas as medidas judiciais cabíveis à espécie para recebimento da quantidade e volume de produto não entregue pelo VENDEDOR e/ou pela INTERVENIENTE ANUENTE, acrescido de juros moratórios, ainda que pro rata tempore à taxa de 1% (um por cento) ao mês, a serem necessariamente somados à quantidade de produto não entregue pelo VENDEDOR e/ou pela INTERVENIENTE ANUENTE, que desde já renuncia a qualquer revisão ou questionamento deste critério de cálculo que é, neste ato, admitido como de sua plena conveniência e adequação.</p>
+
+  <p>6.1.1. Em ocorrendo o previsto no caput desta cláusula, o VENDEDOR e a INTERVENIENTE estão sujeitos ainda às seguintes indenizações e cominações a título de cláusula penal de caráter não compensatório e irredutível, sendo todas incidentes de forma cumulativa e constituídas pelos valores e sanções a seguir descritas:</p>
+
+  <p>(i) Pagamento da diferença apurada entre o preço do café ajustado no Contrato (disposto no item IV do quadro resumo) e o preço de mercado de café vigente na data do inadimplemento, caso este último venha a ser superior ao primeiro;</p>
+
+  <p>(ii) Multa penal, igualmente irredutível e não compensatória no percentual de 10% (dez por cento), incidente sobre a totalidade do volume não entregue, observado para tanto o preço de mercado do café na data da ocorrência do inadimplemento.</p>
+
+  <p>6.1.2. Para fins de apuração e conceituação do chamado “Preço de Mercado do Café” mencionada nesta cláusula e seus parágrafos, será utilizado pelas Partes, o preço do café disponível vigente e praticado na data do evento caracterizador do inadimplemento do VENDEDOR, em operações de vendas daquele produto, na região indicada no presente Contrato, disposta no item VII do quadro resumo, para recebimento da mercadoria.</p>
+
+  <p>6.1.3. As Partes declaram neste ato, plena ciência e inequívoca concordância, de que as penalidades e sanções ora capituladas não descaracterizam e tampouco afastam o caráter de absoluta irrevogabilidade e irretratabilidade do presente Contrato, evidenciando-se que tais sanções somente serão aplicadas nas hipóteses de inadimplemento (parcial ou total) por parte do VENDEDOR e da INTERVENIENTE.</p>
+
+  <p>6.1.4. Sem embargos das previsões genericamente contidas neste Contrato no que se refere à caracterização e constituição do título executivo extrajudicial pelo Contrato ora celebrado, por possuir todos os elementos contidos nos artigo 784, III do Código de Processo Civil, o VENDEDOR também reconhece e confessa de modo irrevogável e irretratável, a plena certeza, liquidez e exigibilidade de todas as sanções e cominações ora previstas e elencadas nesta cláusula.</p>
+
+  <p>6.1.5. Nenhuma tolerância da COMPRADORA implicará novação, que jamais poderá ser arguida como justificativa para o descumprimento de quaisquer obrigações.</p>
+
+  <h2>7. OUTRAS OBRIGAÇÕES E DECLARAÇÕES</h2>
+
+  <p>7.1. O INTERVENIENTE declara, sob as penas da lei, ser proprietário e/ou responsável a justo e legítimo título dos bens empenhados, os quais não pertencem a meeiros, parceiros ou empreiteiros vinculados ao estabelecimento agrícola dos PRODUTORES, motivo pelo qual sobre os bens empenhados não pesam quaisquer ônus, gravames, encargos ou, ainda, não pesando sobre os bens empenhados  ações convencionais de qualquer natureza, inclusive outros contratos de compra e venda celebrado com adquirente que não seja a própria COMPRADORA, ou ações judiciais, inclusive espólio, não estando por isso sendo objeto de inventário ou arrolamento, não dependendo de alvará judicial que autorize sua comercialização, estando, portanto, os bens empenhados absolutamente  livres e desembraçados. Na impossibilidade de cumprimento desta obrigação, o INTERVENIENTE comunicará previamente a COMPRADORA, que poderá ou não concordar com a situação apresentada, faturando-se de acordo com a origem do café.</p>
+
+  <p>7.1.1. O VENDEDOR declara ter conhecimento de que constitui crime de estelionato, declarações falsas ou inexatas acerca dos bens oferecidos em garantia neste instrumento.</p>
+
+  <p>7.1.2. Declara o VENDEDOR que o presente Contrato foi ajustado em caráter irrevogável e irretratável, correndo às suas expensas todos os riscos decorrentes de caso fortuito e de força maior, até o efetivo cumprimento da obrigação contratada, no prazo e nas condições estabelecidas.</p>
+
+  <p>7.1.3. O VENDEDOR e a INTERVENIENTE declaram ter conhecimento de que as entregas parciais de Mercadoria disposta no item III não obrigarão a COMPRADORA a efetuar pagamentos parciais.</p>
+
+  <p>7.1.4. O VENDEDOR obriga-se especialmente:</p>
+
+  <p>a) a formar a lavoura para obtenção da Mercadoria negociada, na área e local determinados neste Contrato no item VII do quadro resumo, e</p>
+
+  <p>b) a não gravar ou alienar, em favor de terceiros os bens vinculados em garantias.</p>
+
+  <p>7.1.5. Por se tratar o Produto de café em grãos cuja colheita envolve complexas fases, tais quais: arruação, derriça, varrição, recolhimento, abanação, transporte, secagem em terreiro, secagem em secador e finalmente beneficiamento final; fases essas que podem alongar a colheita total do produto por cerca de 3 a 4 meses, compromete-se o VENDEDOR a entregar ao COMPRADOR ou à sua ordem, mesmo que parcialmente, toda e qualquer quantidade de grãos que eventualmente forem sendo colhidos ao longo do período de entrega especificado no item V do quadro resumo, no local de entrega especificado no item VI também do quadro resumo, sob pena de serem consideradas vencidas antecipadamente todas as obrigações deste Contrato facultando por consequência à COMPRADORA, a adoção de todas e quaisquer medidas judiciais e extrajudiciais, inclusive cautelares de arresto, sequestro e outras cabíveis à espécie, para fazer valer seus direitos sobre o produto constante no item III do quadro resumo.</p>
+
+  <p>7.1.6. As Partes reconhecem e declaram expressamente que as obrigações assumidas por força deste Contrato estão em perfeito equilíbrio econômico, representando benefícios para ambas as Partes e não causando qualquer tipo de lesão às mesmas.</p>
+
+  <p>7.1.7. O VENDEDOR e a INTERVENIENTE concordam que o presente Contrato preenche os requisitos do artigo 784, III do Código de Processo Civil constituindo-se, portanto, um título executivo extrajudicial.</p>
+
+  <p>7.1.8. O VENDEDOR e a INTERVENIENTE obrigam-se a não ceder sob qualquer forma os direitos do presente Contrato, em especial os creditórios, sem anuência prévia e escrita da COMPRADORA.</p>
+
+  <p>7.1.9. O presente Contrato é realizado em caráter irretratável e irrevogável, obrigando os herdeiros ou seus sucessores.</p>
+
+  <p>7.1.10. Uma vez cumpridas integralmente as obrigações assumidas pelo VENDEDOR, obriga-se a COMPRADORA a promover a liberação das garantias eventualmente prestadas pelo VENDEDOR e/ou seus garantidores, restituindo-lhes os títulos entregues.</p>
+
+  <h2>8. DISPOSIÇÕES GERAIS</h2>
+
+  <p>8.1. As informações contidas no quadro-resumo são parte integrante deste contrato, sem prejuízo das demais.</p>
+
+  <p>8.2. O VENDEDOR concede à COMPRADORA e/ou seus prepostos, funcionários ou quem lhe represente, o livre acesso ao empreendimento e/ou à propriedade, com a finalidade, quando necessário, de fiscalizar a correta formação/condução e colheita da lavoura, e de acompanhar o transporte e o armazenamento do Produto e Mercadoria, podendo para tanto, realizar quaisquer procedimentos, tais como laudos, perícias e demais de estilo.</p>
+
+  <p>8.3. Na hipótese das Partes terem firmado mais de um contrato de venda e compra de café, a COMPRADORA considerará as entregas que for recebendo como cumprimento total ou parcial, conforme ao caso, de qualquer dos contratos firmados, obedecendo a ordem de vencimento dos referidos contratos.</p>
+
+  <p>8.4. A COMPRADORA poderá ceder ou caucionar, no todo ou em parte, a terceiros que deverão respeitar as condições ora pactuadas, os direitos e garantias que lhe advém do presente contrato com o que concorda expressamente o VENDEDOR e o INTERVENIENTE.</p>
+
+  <h2>9. COMPROMISSO DE NATUREZA SOCIAL</h2>
+
+  <p>9.1. O VENDEDOR declara que respeita a legislação vigente, particularmente quanto a não utilização de mão-de-obra infantil e trabalho em condições que caracterizem escravidão, bem como o cultivo em áreas de preservação ambiental ou reservas indígenas, comprometendo-se ainda a observar as decisões do Judiciário nesse sentido, abstendo-se de qualquer outro ato considerado ilegal na execução do presente Contrato. Certo que a COMPRADORA declara, para todos os fins, o direito de recusar o recebimento de Mercadorias, bem como a retenção de pagamentos caso venho a ser constatada a utilização dessas práticas pelo VENDEDOR, sendo facultado, ainda, à COMPRADORA, o direito de rescindir unilateralmente o presente Contrato, por culpa do VENDEDOR.</p>
+
+  <p>Para dirimir quaisquer dúvidas e litígios que deste Contrato decorram, fica eleito o foro da comarca de Vitória/ES.</p>
+
+  <h2>É parte integrante do presente contrato o ANEXO I.</h2>
+
+  <p>E assim estando contratados, firmam as Partes e Interveniente o presente instrumento em 3 (três) vias de igual teor e forma, rubricadas e assinadas, com as testemunhas abaixo assinadas.</p>
+
+  <p><span class="highlight"><%= trader.cityAddress %></span>, <%= document.createdAt %>.</p>
+
+</body>
+
+</html>

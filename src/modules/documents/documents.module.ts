@@ -6,6 +6,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DocumentConsumer } from '@app/modules/documents/documents.consumer';
 import { PdfCreator } from '@app/util/pdfCreator';
 import { Supabase } from '@app/util/supabase';
+import { AutentiqueService } from '@app/modules/documents/autentique.service';
 
 @Module({
   imports: [
@@ -24,6 +25,12 @@ import { Supabase } from '@app/util/supabase';
     }),
   ],
   controllers: [DocumentsController],
-  providers: [DocumentsService, DocumentConsumer, PdfCreator, Supabase],
+  providers: [
+    DocumentsService,
+    DocumentConsumer,
+    PdfCreator,
+    Supabase,
+    AutentiqueService,
+  ],
 })
 export class DocumentsModule {}

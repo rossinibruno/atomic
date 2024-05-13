@@ -4,6 +4,8 @@ import { Job } from 'bull';
 import { PdfCreator } from '../../util/pdfCreator';
 import { Supabase } from '@app/util/supabase';
 import { format } from 'date-fns';
+import { AutentiqueService } from '@app/modules/documents/autentique.service';
+import { ConfigService } from '@nestjs/config';
 
 @Processor('documentQueue')
 export class DocumentConsumer {
@@ -11,14 +13,16 @@ export class DocumentConsumer {
   supabase;
 
   constructor(
+    private readonly configService: ConfigService,
     private pdfCreator: PdfCreator,
     private supabaseClient: Supabase,
+    private autentiqueService: AutentiqueService,
   ) {
     this.supabase = this.supabaseClient.createClient();
 
     this.supabase.auth.signInWithPassword({
-      email: 'admin@contacafe.com.br',
-      password: 'Conilon2018',
+      email: this.configService.get<string>('supabase.username'),
+      password: this.configService.get<string>('supabase.password'),
     });
   }
 
@@ -119,6 +123,20 @@ export class DocumentConsumer {
 
     await this.pdfCreator.create(payload, negotiationId);
 
-    this.logger.log(`pdf-creator complete for job: ${job.id}`);
+    const signers = [
+      {
+        phone: `+55${String(farmers.phoneNumber).replace(/[^\d.]+/g, '')}`,
+        action: 'SIGN',
+        delivery_method: 'DELIVERY_METHOD_WHATSAPP',
+      },
+    ];
+
+    try {
+      await this.autentiqueService.createDocument(negotiationId, signers);
+
+      this.logger.log(`pdf-creator complete for job: ${job.id}`);
+    } catch (error) {
+      this.logger.error(`pdf-creator error for job: ${job.id}`);
+    }
   }
 }

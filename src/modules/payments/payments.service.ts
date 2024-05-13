@@ -2,20 +2,22 @@ import { Injectable } from '@nestjs/common';
 import { Supabase } from '@app/util/supabase';
 import { EfiService } from '@app/modules/payments/efi.service';
 import { addDays, format } from 'date-fns';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class PaymentsService {
   supabase;
 
   constructor(
+    private configService: ConfigService,
     private supabaseClient: Supabase,
     private efiService: EfiService,
   ) {
-    this.supabase = supabaseClient.createClient();
+    this.supabase = this.supabaseClient.createClient();
 
     this.supabase.auth.signInWithPassword({
-      email: 'admin@contacafe.com.br',
-      password: 'Conilon2018',
+      email: this.configService.get<string>('supabase.username'),
+      password: this.configService.get<string>('supabase.password'),
     });
   }
 

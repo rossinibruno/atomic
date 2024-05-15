@@ -1,11 +1,14 @@
 import { Process, Processor } from '@nestjs/bull';
 import { Logger } from '@nestjs/common';
 import { Job } from 'bull';
-import { PdfCreator } from '../../util/pdfCreator';
+import { PdfCreator } from '../../../util/pdfCreator';
 import { Supabase } from '@app/util/supabase';
 import { format } from 'date-fns';
-import { AutentiqueService } from '@app/modules/documents/autentique.service';
+import { AutentiqueService } from '@app/modules/negotiations/autentique.service';
 import { ConfigService } from '@nestjs/config';
+import { promisify } from 'es6-promisify';
+import * as fs from 'fs';
+const rmFile = promisify(fs.rm);
 
 @Processor('documentQueue')
 export class DocumentConsumer {
@@ -28,9 +31,6 @@ export class DocumentConsumer {
 
   @Process()
   async create(job: Job) {
-    this.logger.log(`pdf-creator message: ${job.id}`);
-    this.logger.debug('Data:', job.data);
-
     const { negotiationId } = job.data;
 
     const negotiation = (
@@ -124,19 +124,26 @@ export class DocumentConsumer {
     await this.pdfCreator.create(payload, negotiationId);
 
     const signers = [
+      // {
+      //   phone: `+55${String(farmers.phoneNumber).replace(/[^\d.]+/g, '')}`,
+      //   action: 'SIGN',
+      //   delivery_method: 'DELIVERY_METHOD_WHATSAPP',
+      // },
       {
-        phone: `+55${String(farmers.phoneNumber).replace(/[^\d.]+/g, '')}`,
+        email: 'berossini@gmail.com',
         action: 'SIGN',
-        delivery_method: 'DELIVERY_METHOD_WHATSAPP',
       },
     ];
 
     try {
       await this.autentiqueService.createDocument(negotiationId, signers);
 
-      this.logger.log(`pdf-creator complete for job: ${job.id}`);
+      await rmFile(`./pdf/${negotiationId}.pdf`);
+
+      this.logger.log(`document-creator complete for job: ${job.id}`);
     } catch (error) {
-      this.logger.error(`pdf-creator error for job: ${job.id}`);
+      console.log(error);
+      this.logger.error(`document-creator error for job: ${job.id}`);
     }
   }
 }

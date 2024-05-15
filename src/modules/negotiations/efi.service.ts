@@ -20,7 +20,7 @@ export class EfiService {
     this.p12 = fs.readFileSync(
       join(
         process.cwd(),
-        'dist/modules/payments/certificates/homol.p12',
+        'dist/modules/negotiations/certificates/homol.p12',
       ).toString(),
     );
   }
@@ -65,7 +65,7 @@ export class EfiService {
       }),
       data: {
         calendario: {
-          dataDeVencimento: '2024-05-12',
+          dataDeVencimento: '2024-05-20',
           // dataDeVencimento: payload.dueDate,
           validadeAposVencimento: 5,
         },

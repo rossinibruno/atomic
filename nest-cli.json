@@ -5,7 +5,7 @@
   "compilerOptions": {
     "deleteOutDir": true,
     "assets": [
-      { "include": "modules/payments/certificates/*", "outDir": "dist" },
+      { "include": "modules/negotiations/certificates/*", "outDir": "dist" },
       { "include": "util/templates/*", "outDir": "dist" }
     ],
     "watchAssets": true

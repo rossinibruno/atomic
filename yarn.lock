@@ -1006,6 +1006,11 @@
   dependencies:
     date-fns "*"
 
+"@types/es6-promisify@^6.0.4":
+  version "6.0.4"
+  resolved "https://registry.npmjs.org/@types/es6-promisify/-/es6-promisify-6.0.4.tgz"
+  integrity sha512-dvDNKIo2iH/CV567kk4eXCWfrR6FMeDes2uwSNDysKpBjQTCp0G2p/ViQNVKt0V+VlUgR9hlW0SyIxAK7l7MgA==
+
 "@types/eslint-scope@^3.7.3":
   version "3.7.7"
   resolved "https://registry.npmjs.org/@types/eslint-scope/-/eslint-scope-3.7.7.tgz"
@@ -2518,6 +2523,11 @@ es6-promise@^4.0.3:
   version "4.2.8"
   resolved "https://registry.npmjs.org/es6-promise/-/es6-promise-4.2.8.tgz"
   integrity sha512-HJDGx5daxeIvxdBxvG2cb9g4tEvwIk3i8+nhX0yGrYmZUzbkdg8QbDevheDB8gd0//uPj4c1EQua8Q+MViT0/w==
+
+es6-promisify@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.npmjs.org/es6-promisify/-/es6-promisify-7.0.0.tgz"
+  integrity sha512-ginqzK3J90Rd4/Yz7qRrqUeIpe3TwSXTPPZtPne7tGBPeAaQiU8qt4fpKApnxHcq1AwtUdHVg5P77x/yrggG8Q==
 
 escalade@^3.1.1, escalade@^3.1.2:
   version "3.1.2"

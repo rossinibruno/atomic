@@ -53,7 +53,7 @@ export class WebhookController {
   // }
 
   @Post('negotiations')
-  @UseGuards(AuthGuard('basic'))
+  // @UseGuards(AuthGuard('basic'))
   async proccessNegotiation(@Body() body): Promise<any> {
     try {
       await this.negotiationsService.start(body);

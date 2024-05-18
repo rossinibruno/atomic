@@ -7,10 +7,8 @@ export const config = () => ({
     token: process.env.AUTENTIQUE_TOKEN,
   },
   redis: {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
   },
   efi: {
     clientId: process.env.EFI_CLIENT_ID,

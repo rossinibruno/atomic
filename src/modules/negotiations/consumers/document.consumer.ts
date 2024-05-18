@@ -136,7 +136,18 @@ export class DocumentConsumer {
     ];
 
     try {
-      await this.autentiqueService.createDocument(negotiationId, signers);
+      const response = await this.autentiqueService.createDocument(
+        negotiationId,
+        signers,
+      );
+
+      const documentId = response.data.data.createDocument.id;
+
+      await this.supabase.from('documents').insert({
+        negotiationId,
+        documentId,
+        type: 'CONTRACT',
+      });
 
       await rmFile(`./pdf/${negotiationId}.pdf`);
 

@@ -16,8 +16,8 @@ import { PaymentConsumer } from '@app/modules/negotiations/consumers/payment.con
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
         redis: {
-          host: 'localhost',
-          port: 6379,
+          host: configService.get<string>('redis.host'),
+          port: configService.get<number>('redis.port'),
         },
       }),
       inject: [ConfigService],

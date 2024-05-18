@@ -19,7 +19,10 @@ export class PdfCreator {
 
     await page.setContent(html);
 
-    await page.pdf({ path: `./pdf/${filename}.pdf`, format: 'A4' });
+    const test = await page.pdf({
+      path: `./pdf/${filename}.pdf`,
+      format: 'A4',
+    });
 
     await browser.close();
   }

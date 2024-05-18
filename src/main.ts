@@ -1,16 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import * as fs from 'fs';
+// import * as fs from 'fs';
 
 async function bootstrap() {
   // const httpsOptions = {
-  //   key: fs.readFileSync('./secrets/private-key.pem'),
-  //   cert: fs.readFileSync('./secrets/public-certificate.pem'),
-  // };
-
-  // const httpsOptions = {
-  //   cert: fs.readFileSync(''), // Certificado fullchain do dominio
-  //   key: fs.readFileSync('.'), // Chave privada do domínio
+  //   cert: fs.readFileSync('/opt/bitnami/apache/conf/bitnami/certs/server.crt'), // Certificado fullchain do dominio
+  //   key: fs.readFileSync('/opt/bitnami/apache/conf/bitnami/certs/server.key'), // Chave privada do domínio
   //   ca: fs.readFileSync('./certificates/chain-pix-sandbox.crt'), // Certificado público da Efí
   //   minVersion: 'TLSv1.2',
   //   requestCert: true,

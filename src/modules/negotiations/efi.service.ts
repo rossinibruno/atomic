@@ -65,8 +65,8 @@ export class EfiService {
       }),
       data: {
         calendario: {
-          dataDeVencimento: '2024-05-20',
-          // dataDeVencimento: payload.dueDate,
+          // dataDeVencimento: '2024-05-20',
+          dataDeVencimento: payload.dueDate,
           validadeAposVencimento: 5,
         },
         devedor: {

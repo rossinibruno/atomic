@@ -124,15 +124,15 @@ export class DocumentConsumer {
     await this.pdfCreator.create(payload, negotiationId);
 
     const signers = [
-      // {
-      //   phone: `+55${String(farmers.phoneNumber).replace(/[^\d.]+/g, '')}`,
-      //   action: 'SIGN',
-      //   delivery_method: 'DELIVERY_METHOD_WHATSAPP',
-      // },
       {
-        email: 'berossini@gmail.com',
+        phone: `+55${String(farmers.phoneNumber).replace(/[^\d.]+/g, '')}`,
         action: 'SIGN',
+        delivery_method: 'DELIVERY_METHOD_WHATSAPP',
       },
+      // {
+      //   email: 'berossini@gmail.com',
+      //   action: 'SIGN',
+      // },
     ];
 
     try {

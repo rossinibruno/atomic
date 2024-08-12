@@ -68,9 +68,9 @@ export class DocumentConsumer {
         name: farmers.name,
         cpf: farmers.cpf,
         stateRegistration: farmers.stateRegistration,
-        partnerStatus: '',
-        partnerName: '',
-        partnerCpf: '',
+        partnerStatus: farmers.partnerStatus,
+        partnerName: farmers.partnerName,
+        partnerCpf: farmers.partnerCpf,
         streetAddress: farmers.streetAddress,
         numberAddress: farmers.numberAddress,
         complementAddress: farmers.complementAddress,
@@ -134,6 +134,17 @@ export class DocumentConsumer {
       //   action: 'SIGN',
       // },
     ];
+
+    if (farmers.partnerStatus === 'CASADO') {
+      signers.push({
+        phone: `+55${String(farmers.partnerPhoneNumber).replace(
+          /[^\d.]+/g,
+          '',
+        )}`,
+        action: 'SIGN',
+        delivery_method: 'DELIVERY_METHOD_WHATSAPP',
+      });
+    }
 
     try {
       const response = await this.autentiqueService.createDocument(

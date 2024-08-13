@@ -9,6 +9,7 @@ import { WebhookController } from '@app/modules/negotiations/webhook.controller'
 import { NegotiationsService } from '@app/modules/negotiations/negotiations.service';
 import { EfiService } from '@app/modules/negotiations/efi.service';
 import { PaymentConsumer } from '@app/modules/negotiations/consumers/payment.consumer';
+import { DocumentController } from '@app/modules/negotiations/document.controller';
 
 @Module({
   imports: [
@@ -29,7 +30,7 @@ import { PaymentConsumer } from '@app/modules/negotiations/consumers/payment.con
       name: 'paymentQueue',
     }),
   ],
-  controllers: [WebhookController],
+  controllers: [WebhookController, DocumentController],
   providers: [
     NegotiationsService,
     DocumentConsumer,

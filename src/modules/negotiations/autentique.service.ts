@@ -34,4 +34,23 @@ export class AutentiqueService {
 
     return await axios(config);
   }
+
+  async getDocument(documentId) {
+    const data = {
+      query: `query { document(id: "${documentId}") { id name refusable sortable created_at files { original signed } signatures { public_id name email created_at action { name } link { short_link } user { id name email } email_events { sent opened delivered refused reason } viewed { ...event } signed { ...event } rejected { ...event } } } } fragment event on Event { ipv4 ipv6 reason created_at geolocation { country countryISO state stateISO city zipcode latitude longitude } }`,
+    };
+
+    const config = {
+      method: 'post',
+      url: 'https://api.autentique.com.br/v2/graphql',
+      headers: {
+        Authorization: `Bearer ${this.configService.get<string>(
+          'autentique.token',
+        )}`,
+      },
+      data,
+    };
+
+    return await axios(config);
+  }
 }

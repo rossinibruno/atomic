@@ -33,6 +33,10 @@ export class NegotiationsService {
         type: 'CONTRACT',
         negotiationId: request.record.id,
       });
+      await this.documentQueue.add({
+        type: 'CPR',
+        negotiationId: request.record.id,
+      });
       await this.paymentQueue.add({
         negotiationId: request.record.id,
       });

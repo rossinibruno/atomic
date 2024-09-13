@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0" />
+
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+
+  html {
+    zoom: 1;
+  }
+
+  html,
+  body {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: normal !important;
+    font-size: 14px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 45px;
+    font-size: 16px;
+    text-decoration: underline;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 35px;
+  }
+
+  h3 {
+    font-size: 14px;
+  }
+
+  h2,
+  h3 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    text-align: justify;
+    line-height: 23px;
+  }
+
+  span {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+</style>
+</head>
+
+<body>
+  <h1>CÉDULA DE PRODUTO RURAL – n° 0001-4252</h1>
+
+  <h2><%= negotiation.amount * 60 %> Kgs. Café <%= negotiation.typeCoffee %> – <%= negotiation.qualityCoffee %>.</h2>
+
+  <p>
+    Vencimento:
+  </p>
+  <p>Entrega no mês de <%= negotiation.deliveryDate %>, eu(nós), <%= farmer.name %> , produtor(es) rural(is), Brasileiro(a), <%= farmer.partnerStatus %>, domiciliado(s) no local da lavoura abaixo discriminado, entregarei(mos), nos termos da presente e na forma da Lei n° 8.929, de 22.08.94, à ( lojista <%= trader.businessName %>) , inscrita no CNPJ sob n° <%= trader.cnpj %>, ou à sua ordem, o seguinte: </p>
+
+  <p>1 – <span>PRODUTO:</span> Café <%= negotiation.typeCoffee %>, <%= negotiation.qualityCoffee %>, cru, em grão, de produção brasileira, safra <%= negotiation.harvestSeason %>.</p>
+
+  <p>2 – <span>QUANTIDADE:</span> <%= negotiation.amount * 60 %> Kg, equivalentes à <%= negotiation.amount %> SACAS de 60 Kg.</p>
+
+  <p>3 – <span>CARACTERÍSTICAS:</span> Café <%= negotiation.typeCoffee %> - <%= negotiation.qualityCoffee %> <b><%= negotiation.certificateCoffee ? 'Com certificação 4C' : '' %></b></p>
+
+  <p>4 – <span>LOCAL DE FORMAÇÃO DA LAVOURA:</span> propriedade de <%= farmer.name %>, brasileiro, Empresário(a), <%= farmer.partnerStatus %>, inscrito no CPF(CNPJ)/MF n° <%= farmer.cpf %> e portador do RG n° #ADICIONAR RG#, localizada à <%= farmer.streetAddress %>, <%= farmer.numberAddress %>, <%= farmer.complementAddress ? farmer.complementAddress + ', ' : ''  %><%= farmer.suburbAddress %> situada no Município de <%= farmer.cityAddress %> - <%= farmer.stateAddress %>. </p>
+
+  <p>5 – <span>ÁREA A SER PLANTADA E PRODUÇÃO ESTIMADA:</span></p>
+
+  <p>(    <%= farmer.coffeeArea %>     ) ha, de Café.</p>
+
+  <p>6 – <span>CONDIÇÕES DE ENTREGA:</span></p>
+
+  <p><b>Período de Entrega:</b> <%= negotiation.deliveryDate %></p>
+
+  <p><b>Local de entrega:</b> <%= warehouse.streetAddress %>, <%= warehouse.numberAddress %>, <%= warehouse.complementAddress ? warehouse.complementAddress  + ', ' : '' %><%= warehouse.suburbAddress %> localizado na Cidade de <%= warehouse.cityAddress %> - <%= warehouse.stateAddress %>.</p>
+
+  <p><b>MULTA:</b> Se o produto não for entregue até data do vencimento desta Cédula, incidirá multa não compensatória equivalente a 10% (dez por cento) sobre o valor principal, além de juros de mora de 1% a.m. (um por cento ao mês). Tais encargos deverão ser pagos em Produto do mesmo gênero e qualidade especificados nesta Cédula. </p>
+
+  <p>7 – <span>DESPESAS COM A COLHEITA:</span> Havendo necessidade de participação direta da CREDORA na colheita do produto, todas as despesas (administrativas, financeiras, tributárias, sociais, etc.), serão de responsabilidade exclusiva do EMITENTE. Todas as despesas eventualmente pagas pela CREDORA serão automaticamente convertidas em quantidades de produto até o montante necessário ao seu total ressarcimento e serão imediatamente entregues pelo EMITENTE. </p>
+
+  <p>8 – <span>GARANTIA CEDULAR:</span> Os bens vinculados a esta cédula são os seguintes:</p>
+
+  <p>Em garantia do fiel cumprimento das obrigações assumidas nesta Cédula, o EMITENTE dá em PENHOR CEDULAR DE PRIMEIRO GRAU e sem concorrência de terceiros à CREDORA, <%= negotiation.amount %> sacas de 60 Kg. Cada de CAFÉ <% negotiation.typeCoffee %> , safra <%= negotiation.harvestSeason %>, conforme características descritas na cláusula 3 desta Cédula. </p>
+
+  <p>O EMITENTE permanecerá na posse imediata do produto ora dado em penhor, que se encontra cultivado no local da plantação, como descrito na cláusula 4 desta Cédula.</p>
+
+  <p>Em razão do penhor acima ajustado, fica indicado como FIEL DEPOSITÁRIO até a entrega do produto dado em garantia, o Sr(a) <%= farmer.name %>, Brasileiro(a), Empresário(a), <%= farmer.partnerStatus %>, inscrito(a) no CPF/MF sob n° <%= farmer.cpf %>, que para tal finalidade também assina o presente instrumento nos temos do parágrafo 1° do artigo 7° da Lei 8929/94. O FIEL DEPOSITÁRIO ainda declara, expressamente, aceitar e assumir tal obrigação, responsabilizando-se por todos os riscos, e sujeitando-se às considerações impostas ao depositário infiel. </p>
+
+  <p>9 – <span>ANUÊNCIA: Sr.(a).</span> <%= farmer.partnerStatus === 'CASADO' ? farmer.partnerName : farmer.name %>, inscrita(o) no CPF/MF sob o n° <%= farmer.partnerStatus === 'CASADO' ? farmer.partnerCpf : farmer.cpf %>, ora denominada(o) anuente, assina o presente instrumento declarando sua ciência quanto ao seu conteúdo e para que se produzam os efeitos legais. Em caso de descumprimento da presente obrigação, a(o) anuente está ciente de que a safra seguinte será mantida como garantia da presente CPR. </p>
+
+  <p>10 – <span>CONDIÇÕES GERAIS:</span> </p>
+
+  <p>Se no início da colheita da lavoura, seja em que momento for, os primeiros produtos colhidos não forem entregues no local avençado, ocorrerá o vencimento antecipado desta Cédula, legitimando a Credora a tomar as medidas judiciais cabíveis. </p>
+
+  <p>Obriga-se o EMITENTE a formar lavoura para a obtenção do Produto ora negociado, na área e local determinados cesta Cédula. </p>
+
+  <p>Obriga-se o EMITENTE, durante a vigência deste título, a não gravar ou alienar em favor de terceiros, os produtos vinculados em garantias.</p>
+
+  <p>A CREDORA terá livre acesso à propriedade onde está sendo cultivada a lavoura, onde estiver sendo armazenado o produto ou conservadas as garantias, com finalidade de fiscalização, podendo ainda acompanhar o transporte e armazenamento do mesmo, e demais providências atinentes à averiguação da regularidade de atendimento das condições estipuladas na presente cédula.</p>
+
+  <p>A CREDORA poderá, a qualquer momento, endossar o presente título a terceiros, aplicando-se as normas do direito cambiário.</p>
+
+  <p>Esta Cédula poderá ser aditada, retificada ou ratificada no todo ou em parte, através de aditivos que passarão a integrá-la, devendo ser assinados e datados pelo EMITENTE e pela CREDORA. </p>
+
+  <p>Este instrumento obriga o total cumprimento não só pelas partes, assim como de seus herdeiros e sucessores a qualquer título. </p>
+
+  <p>Para diminuir qualquer questão oriunda da presente contratação fica eleito o Foro da Comarca de Vitória/ES, ou o do domicílio do Réu.</p>
+  <br><br>
+
+  <p>Local: <%= trader.cityAddress %>, data: <%= document.createdAt %>.</p>
+</body>
+</html>

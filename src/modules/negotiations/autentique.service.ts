@@ -8,19 +8,22 @@ import * as fs from 'fs';
 export class AutentiqueService {
   constructor(private readonly configService: ConfigService) {}
 
-  async createDocument(negotiationId, signers) {
+  async createDocument(negotiationId, signers, type) {
     const data = new FormData();
 
     console.log(signers);
 
     data.append(
       'operations',
-      `{"query":"mutation CreateDocumentMutation($document: DocumentInput!, $signers: [SignerInput!]!, $file: Upload!) {createDocument(document: $document, signers: $signers, file: $file) {id name refusable sortable created_at signatures { public_id name email created_at action { name } link { short_link } user { id name email }}}}", "variables":{"document": {"name": "Contrato"},"signers": ${JSON.stringify(
+      `{"query":"mutation CreateDocumentMutation($document: DocumentInput!, $signers: [SignerInput!]!, $file: Upload!) {createDocument(document: $document, signers: $signers, file: $file) {id name refusable sortable created_at signatures { public_id name email created_at action { name } link { short_link } user { id name email }}}}", "variables":{"document": {"name": "${type}"},"signers": ${JSON.stringify(
         signers,
       )},"file":null}}`,
     );
     data.append('map', '{"file": ["variables.file"]}');
-    data.append('file', fs.createReadStream(`./pdf/${negotiationId}.pdf`));
+    data.append(
+      'file',
+      fs.createReadStream(`./pdf/${type}-${negotiationId}.pdf`),
+    );
 
     const config = {
       method: 'post',

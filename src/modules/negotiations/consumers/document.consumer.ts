@@ -31,7 +31,7 @@ export class DocumentConsumer {
 
   @Process()
   async create(job: Job) {
-    const { negotiationId } = job.data;
+    const { negotiationId, type } = job.data;
 
     const negotiation = (
       await this.supabase
@@ -121,7 +121,7 @@ export class DocumentConsumer {
       },
     };
 
-    await this.pdfCreator.create(payload, negotiationId);
+    await this.pdfCreator.create(payload, negotiationId, type);
 
     const signers = [
       {
@@ -150,6 +150,7 @@ export class DocumentConsumer {
       const response = await this.autentiqueService.createDocument(
         negotiationId,
         signers,
+        type,
       );
 
       const documentId = response.data.data.createDocument.id;
@@ -157,10 +158,10 @@ export class DocumentConsumer {
       await this.supabase.from('documents').insert({
         negotiationId,
         documentId,
-        type: 'CONTRACT',
+        type,
       });
 
-      await rmFile(`./pdf/${negotiationId}.pdf`);
+      await rmFile(`./pdf/${type}-${negotiationId}.pdf`);
 
       this.logger.log(`document-creator complete for job: ${job.id}`);
     } catch (error) {

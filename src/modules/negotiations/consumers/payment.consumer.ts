@@ -45,7 +45,7 @@ export class PaymentConsumer {
           'yyyy-MM-dd',
         ),
         trader: {
-          cnpj: negotiation.companies.cnpj,
+          cnpj: negotiation.companies.cnpj.replace(/\D/g, ''),
           businessName: negotiation.companies.businessName,
           streetAddress: negotiation.companies.streetAddress,
           cityAddress: negotiation.companies.cityAddress,
